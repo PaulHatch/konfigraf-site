@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Konfigraf</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Konfigraf Configuration Management Service">
+    <meta name="author" content="Paul Hatcherian">
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16" />
+    <link rel="stylesheet" href="fonts/fonts.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<section>
+    <img class="logo" src="https://www.konfigraf.com/logo.png" title="" alt="Konfigraf" width="200" height="174">
+
+    <em>Configuration as Code for Microservice Applications</em>
+
+    <p>
+        Konfigraf is a git-based configuration service that provides management for
+        application configuration/settings. Konfigraf is a stateless service which
+        provides a simple HTTP API for reading and writing arbitrary files to git
+        repositories which are backed by a Postgres database rather than a file store.
+    </p>
+    <p>
+        When updates are made, Konfigraf can push changes to additional remote git
+        repositories, which allows the configuration and configuration history to be
+        accessed in a source code management application such as GitHub, BitBucket,
+        or GitLab.
+    </p>
+    <p>
+        Konfigraf is especially useful for applications which allow a lot of runtime
+        behavior to be driven by configuration. In such applications, the configuration
+        is a sort of de facto source code. Just to be clear, in this context when we talk
+        about configuration we mean state that is modified at runtime by an application
+        by users of the application, not static configuration stored in source code or an
+        environment. The common approach of simply storing service application configuration
+        in a SQL database has a number of drawbacks. Fully implementing auditing, change
+        diff reports, and other features that are used for source code control is time
+        consuming and imposes significant friction on future modifications. By using Git,
+        the application gets access to the same tools used to manage code.
+    </p>
+    <p>
+        Konfigraf provides HTTP access to Git while still using a SQL database as the
+        backing store. This allows similar management and backup of service configuration
+        as conventional configuration stored in tables.
+    </p>
+    <img class="diagram" src="https://www.konfigraf.com/overview.png" title="" width="400"
+        alt="Overview diagram of Konfigraf layout">
+    <p>
+        Konfigraf requires Postgres for storage. Optionally, Vault is used to store
+        credentials for any remote replicated repositories.
+    </p>
+    <div class="button-row">
+        <a class="filled-button" href="https://github.com/PaulHatch/konfigraf">Konfigraf on GitHub</a>
+    </div>
+</section>
+<footer>
+    <span>&copy; 2019 Paul Hatcherian</span>
+    <br>
+    <small>
+        All product names, trademarks and registered trademarks are property of their respective owners.
+    </small>
+</footer>
+</body>
+
+</html>
