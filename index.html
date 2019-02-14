@@ -22,33 +22,70 @@
     <em>Configuration as Code for Microservice Applications</em>
 
     <p>
-        Konfigraf is a git-based configuration service that provides management for
+        Konfigraf is a Git-based configuration service that provides management for
         application configuration/settings. Konfigraf is a stateless service which
-        provides a simple HTTP API for reading and writing arbitrary files to git
+        provides a simple HTTP API for reading and writing arbitrary files to Git
         repositories which are backed by a Postgres database rather than a file store.
     </p>
     <p>
-        When updates are made, Konfigraf can push changes to additional remote git
+        When updates are made, Konfigraf can push changes to additional remote Git
         repositories, which allows the configuration and configuration history to be
         accessed in a source code management application such as GitHub, BitBucket,
         or GitLab.
     </p>
+    <h3>Why Should You Use Konfigraf?</h3>
     <p>
-        Konfigraf is especially useful for applications which allow a lot of runtime
-        behavior to be driven by configuration. In such applications, the configuration
-        is a sort of de facto source code. Just to be clear, in this context when we talk
-        about configuration we mean state that is modified at runtime by an application
-        by users of the application, not static configuration stored in source code or an
-        environment. The common approach of simply storing service application configuration
-        in a SQL database has a number of drawbacks. Fully implementing auditing, change
-        diff reports, and other features that are used for source code control is time
-        consuming and imposes significant friction on future modifications. By using Git,
-        the application gets access to the same tools used to manage code.
+        &quot;Configuration&quot; is a broad term, in the context of software applications
+        it can have several meanings:
     </p>
+    <ul>
+        <li>
+            <b>Static settings</b> stored in application source code which are intended
+            to give developers a central place to manage constants that are used in code.
+            These are usually present in the form of a yaml, json, or xml file located at
+            the root of a project's source code. Konfigraf is not intended for management
+            of static configuration.
+        </li>
+        <li>
+            <b>Environment variables</b> usually provided as environment variables or as
+            files in volumes mounted to a container to provide the application necessary
+            information about the context in which it running. Konfigraf is not indended
+            for environment information. Though it could be used in such a context, since
+            these settings are nearly always applied during the initial provisioning phase
+            of an application's lifecycle a simplier solution is likely a better fit. The
+            term <em>configuration as code</em> is used to describe a strategy of environment
+            configuration management in which this configuration is stored under a source
+            control repository like Git.
+        </li>
+        <li>
+            <b>Application configuration</b> is data usually created by the application at
+            runtime, usually by users of an application via an interactive user interface.
+            This data is generally stored in a database designed by the developer then 
+            subsequently loaded and used at runtime to alter the application's runtime
+            behavior. This is the use case that Konfigraf was designed to support.
+        </li>
+    </ul>
+    <p>
+        Storing application configuration in a simple CRUD accessed database has a number of
+        drawbacks. If this configuration is used as an input to control flow or branch logic,
+        and particularly as complexity increases and for systems for which distinct
+        &quot;administration&quot; and &quot;user&quot; functions play a significant role,
+        this can easily become a sort of application code which is present only in production
+        and has no source control applied.
+    </p>
+    <p>
+        Ideally in these cases we'd like to have something like Git to keep a log of changes,
+        perform change diff reports, and perhaps even move changes into other environments for
+        testing. Unfortunately fulling implementing such a system for an application's runtime
+        configuration is a substatial project in and of itself.
+    </p>
+    <h3>Runtime Application Configuration</h3>
     <p>
         Konfigraf provides HTTP access to Git while still using a SQL database as the
         backing store. This allows similar management and backup of service configuration
-        as conventional configuration stored in tables.
+        as conventional configuration stored in tables. This configuration can be automatically
+        pushed to remote repositories for operational visibility or testing in preview
+        environments.
     </p>
     <img class="diagram" src="https://www.konfigraf.com/overview.png" title="" width="400"
         alt="Overview diagram of Konfigraf layout">
@@ -57,7 +94,7 @@
         credentials for any remote replicated repositories.
     </p>
     <div class="button-row">
-        <a class="filled-button" href="https://github.com/PaulHatch/konfigraf">Konfigraf on GitHub</a>
+        <a class="filled-button" href="https://Github.com/PaulHatch/konfigraf">Konfigraf on GitHub</a>
     </div>
 </section>
 <footer>

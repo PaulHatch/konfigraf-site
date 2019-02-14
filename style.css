@@ -96,15 +96,14 @@ footer {
 
 ul {
   list-style: none;
+  margin: 10px;
+  padding: 0px;
 }
 
-ul li::before {
-  display: inline-block;
-  content: "\2022";
-  color: #21d4fd;
-  font-weight: bold;
-  width: 1em;
-  margin-left: -1em;
+li {
+  display: block;
+  margin: 10px;
+  padding: 0;
 }
 
 .logos {
