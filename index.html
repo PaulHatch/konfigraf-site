@@ -23,15 +23,9 @@
 
     <p>
         Konfigraf is a Git-based configuration service that provides management for
-        application configuration/settings. Konfigraf is a stateless service which
-        provides a simple HTTP API for reading and writing arbitrary files to Git
-        repositories which are backed by a Postgres database rather than a file store.
-    </p>
-    <p>
-        When updates are made, Konfigraf can push changes to additional remote Git
-        repositories, which allows the configuration and configuration history to be
-        accessed in a source code management application such as GitHub, BitBucket,
-        or GitLab.
+        application configuration/settings. Konfigraf is built as Postgres extension
+        which provides functions for reading and writing arbitrary files to Git
+        repositories which are backed by Postgres tables rather than a file store.
     </p>
     <h3>Why Should You Use Konfigraf?</h3>
     <p>
@@ -79,26 +73,9 @@
         testing. Unfortunately fulling implementing such a system for an application's runtime
         configuration is a substatial project in and of itself.
     </p>
-    <h3>Runtime Application Configuration</h3>
-    <p>
-        Konfigraf provides HTTP access to Git while still using a SQL database as the
-        backing store. This allows similar management and backup of service configuration
-        as conventional configuration stored in tables. This configuration can be automatically
-        pushed to remote repositories for operational visibility or testing in preview
-        environments.
-    </p>
-    <img class="diagram" src="https://www.konfigraf.com/overview.png" title="" width="400"
-        alt="Overview diagram of Konfigraf layout">
-    <p>
-        Konfigraf requires Postgres for storage. Optionally, Vault is used to store
-        credentials for any remote replicated repositories.
-    </p>
-    <div class="button-row">
-        <a class="filled-button" href="https://Github.com/PaulHatch/konfigraf">Konfigraf on GitHub</a>
-    </div>
 </section>
 <footer>
-    <span>&copy; 2019 Paul Hatcherian</span>
+    <span>&copy; 2020 Paul Hatcherian</span>
     <br>
     <small>
         All product names, trademarks and registered trademarks are property of their respective owners.
